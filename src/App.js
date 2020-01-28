@@ -1,13 +1,18 @@
 import React from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
 
-import Post from './Post.js';
+
+import Header from './components/Header.js';
+import Main from './pages/Main.js';
+import Post from './components/Post.js';
 
 import './index.scss';
 
 class App extends React.Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+        };
     
     }
     
@@ -18,34 +23,46 @@ class App extends React.Component {
         .then(response => response.json())
         .then(data => {
             this.setState({data: data});
+            this.createPosts();
         });
+        
     }
+    
+    createPosts() {
+        let posts = [];
+        
+        this.state.data.map(function(post, i) {
+            posts.push(
+                <Post data={post} key={i} />
+            );
+        });
+        this.setState({posts: posts});
+    }
+        
+    
+
 
     
     render() {
-        let posts = [];
-
         
-        // have to make this if - otherwise it tries to render nothing the first time around!
         if (this.state.data) {
-            this.state.data.map(function(post) {
-                posts.push(
-                    <Post data={post} />
-                );
-            });
+
+            return (
+                <>
+                <Header />
+
+                <main>
+                <Switch>
+                    <Route exact path='/' render={(props) => <Main {...props} posts={this.state.posts} />} />
+                    <Route path='/post/:id' render={(props) => <Post {...props}/>} />
+                </Switch>
+                </main>
+
+                </>
+            );
+        } else {
+            return "Loading...";
         }
-        
-        return (
-            <div className="App">
-                <header>
-                    <h1>Some notions</h1>
-                    <p>The personal blog of Erin Knowles.<br />
-                    Looking for <a href="erinknowles.com">her portfolio?</a></p>
-                </header>
-                
-                <main>{posts}</main>
-            </div>
-        );
     }
 }
 

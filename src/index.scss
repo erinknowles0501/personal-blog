@@ -10,7 +10,7 @@ body {
     top: -1rem;
 }
 
-.App {
+#root {
     max-width: 40%;
     margin: 0 auto;
 }
@@ -64,4 +64,10 @@ section {
         font-size: 2.5rem;
         font-family: 'inconsolata', monospace;
     }
+}
+
+
+svg * {
+    width: 100%;
+    height: 100%;
 }
