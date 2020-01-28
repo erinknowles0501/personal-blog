@@ -1,5 +1,6 @@
 import React from 'react';
 import Shape from './Shape';
+import Svg from './Svg';
 
 
 class Post extends React.Component {
@@ -28,11 +29,11 @@ class Post extends React.Component {
         return (
             <section>
 
-            <svg id={id}>
-            <Shape />
-            <Shape />
-            <Shape />
-            </svg>
+            <Svg id={id}>
+                <Shape />
+                <Shape />
+                <Shape />
+            </Svg>
             
             {this.resizeSVG()}
 
