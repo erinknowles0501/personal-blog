@@ -11,7 +11,8 @@ class Post extends React.Component {
     }
     
     render() {
-        let content = this.props.data.title.rendered.replace("&nbsp;", " ");
+        let title = this.props.data.title.rendered.replace("&nbsp;", " ");
+        let content = this.props.data.content.rendered;
         let id = this.props.data.id;
 
 
@@ -23,8 +24,16 @@ class Post extends React.Component {
                 <Shape />
 
 
-            <h2><Link to={'/post/'+this.props.data.id}>{content}</Link></h2>
-            <div dangerouslySetInnerHTML={ {__html: this.props.data.content.rendered} }></div>
+            <h2>
+                <Link to={{
+                    pathname: '/post/'+id,
+                    state: {
+                        title: title,
+                        content: content
+                    }
+                }}>{title}</Link>
+                </h2>
+            <div className="content" dangerouslySetInnerHTML={ {__html: content} }></div>
             </section>
         )
     }

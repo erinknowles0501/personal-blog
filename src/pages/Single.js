@@ -6,12 +6,15 @@ class Single extends React.Component {
         this.state = {};
     }
 
+
     render() {
+        let id = this.props.match.params.id;
+
         return (
-            <>
-            <h1>{this.props.match.params.id}</h1>
-            Hello????
-            </>
+            <section>
+                <h1>{this.props.location.state.title}</h1>
+                <div className="content" dangerouslySetInnerHTML={ {__html: this.props.location.state.content} }></div>
+            </section>
         )
     }
 }
