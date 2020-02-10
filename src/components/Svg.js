@@ -6,21 +6,21 @@ class Svg extends React.Component {
         this.state ={};
     }
     
-    componentDidMount() {
-        const theSVG = document.getElementById(this.props.id);
-        if (theSVG) {
-            console.log("There is svg!");
-//            const typeSVGel = document.getElementById(this.state.id);
-//            totalHeight = typeSVGel.getBBox().height;
-//            totalWidth = typeSVGel.getBBox().width;
-//   //         document.getElementById(this.svgId).setAttribute("height", totalHeight);
-//    //        document.getElementById(this.svgId).setAttribute("width", totalWidth);
-        }
-    }
+//    componentDidMount() {
+//        const theSVG = document.getElementById('svg' + this.props.id);
+//        const theGroup = document.getElementById('group' + this.props.id);
+//        if (theSVG) {
+//            console.log("There is svg!");
+//            let totalHeight = theGroup.getBBox().height;
+//            let totalWidth = theGroup.getBBox().width;
+//            theSVG.setAttribute("height", totalHeight);
+//            theSVG.setAttribute("width", totalWidth);
+//        }
+//    }
     
     render() {
         return (
-            <svg id={this.props.id}>
+            <svg id={'svg' + this.props.id}>
             {this.props.children}
             </svg>
         );

@@ -5,6 +5,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import Header from './components/Header.js';
 import Main from './pages/Main.js';
 import Post from './components/Post.js';
+import Single from './pages/Single.js';
 
 import './index.scss';
 
@@ -54,7 +55,7 @@ class App extends React.Component {
                 <main>
                 <Switch>
                     <Route exact path='/' render={(props) => <Main {...props} posts={this.state.posts} />} />
-                    <Route path='/post/:id' render={(props) => <Post {...props}/>} />
+                    <Route path='/post/:id' component={Single} />
                 </Switch>
                 </main>
 

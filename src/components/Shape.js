@@ -11,7 +11,6 @@ class Shape extends React.Component {
             "color": this.makeShape().color,
             "opacity": this.makeShape().opacity,
             "gradient": false,
-            "rotation": this.makeShape().rotation,
             "id": globId()
         };
     }
@@ -25,9 +24,20 @@ class Shape extends React.Component {
         let opacity = Math.random() + 0.2;
         let color = colors[Math.floor(Math.random() * colors.length)];
         let type = shapes[Math.floor(Math.random()*shapes.length)];
-        let rotation = "rotate(" + Math.random()*360 + "," + (size/2) + "," + (size/2) + ")";
+//        let rotation = "rotate(" + Math.random()*360 + "," + (size/2) + "," + (size/2) + ")";
         
-        return {"type": type, "color": color, "size": size, "opacity": opacity, "rotation": rotation};
+        return {"type": type, "color": color, "size": size, "opacity": opacity};
+    }
+    
+    
+    componentDidMount() {
+        const theSVG = document.getElementById('svg' + this.state.id);
+        const theShape = document.getElementById(this.state.id);
+        if (theSVG) {
+            console.log("There is svg!");
+            theSVG.setAttribute("height", theShape.getBBox().height);
+            theSVG.setAttribute("width", theShape.getBBox().width);
+        }
     }
     
     
@@ -40,20 +50,20 @@ class Shape extends React.Component {
                 break;
             case 'square':
                 typeSVG = 
-                    <rect id={this.state.id} width={this.state.size} height={this.state.size} fill={this.state.color} opacity={this.state.opacity} transform={this.state.rotation}></rect>;
+                    <rect id={this.state.id} width={this.state.size} height={this.state.size} fill={this.state.color} opacity={this.state.opacity}></rect>;
                 break;
             case 'polygon':
                 let points = 
                     `${this.state.size*2}, ${this.state.size*0.1} ${this.state.size*0.2},${this.state.size*1.6} ${this.state.size*1.8},${this.state.size*1.5}`;
                 typeSVG = 
-                    <polygon id={this.state.id} points={points} fill={this.state.color} opacity={this.state.opacity} transform={this.state.rotation}></polygon>
+                    <polygon id={this.state.id} points={points} fill={this.state.color} opacity={this.state.opacity}></polygon>
                 break;
             default:
                 typeSVG = 
                     <circle id={this.state.id} r={this.state.size} cy={this.state.size} cx={this.state.size} fill={this.state.color} opacity={this.state.opacity} alignmentBaseline="central"></circle>;
         }
         
-        return typeSVG;
+        return <svg id={'svg'+this.state.id}>{typeSVG}</svg>;
         
     }
     
