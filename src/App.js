@@ -30,10 +30,9 @@ class App extends React.Component {
     }
     
     createPosts() {
-        let posts = [];
-        
-        this.state.data.map(function(post, i) {
-            posts.push(
+
+        const posts = this.state.data.map((post, i) => {
+            return (
                 <Post data={post} key={i} />
             );
         });
