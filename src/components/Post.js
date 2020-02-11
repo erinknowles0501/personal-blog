@@ -19,9 +19,9 @@ class Post extends React.Component {
         return (
             <section>
 
+                {/* <Shape />
                 <Shape />
-                <Shape />
-                <Shape />
+                <Shape /> */}
 
 
             <h2>

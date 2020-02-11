@@ -19,7 +19,7 @@ class App extends React.Component {
     
     componentDidMount() {
         let url = "https://public-api.wordpress.com/wp/v2/sites/makesomenotions.design.blog/posts";
-        
+
         fetch(url)
         .then(response => response.json())
         .then(data => {
