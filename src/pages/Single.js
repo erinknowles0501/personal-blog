@@ -1,12 +1,6 @@
 import React from 'react';
 
 class Single extends React.Component {
-    constructor() {
-        super();
-        this.state = {};
-    }
-
-
     render() {
         let id = this.props.match.params.id;
 
@@ -18,8 +12,5 @@ class Single extends React.Component {
         )
     }
 }
-
-
-
 
 export default Single
