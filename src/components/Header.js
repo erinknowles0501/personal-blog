@@ -5,8 +5,7 @@ function Header() {
     return (
         <header>
             <h1><Link to='/'>Some notions</Link></h1>
-            <p>The personal blog of Erin Knowles.<br />
-            Looking for <a href="erinknowles.com">her portfolio?</a></p>
+            <p>Personal blog built with React and the WordPress API</p>
         </header>
     )
 }
